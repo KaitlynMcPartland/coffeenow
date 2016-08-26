@@ -28,6 +28,7 @@
      -o-background-size: cover;
  }
 
+
  h1,
  h2,
  h3,
@@ -94,8 +95,12 @@
  .box {
      margin-bottom: 20px;
      padding: 30px 15px;
-     background: #fff;
-     background: rgba(255,255,255,0.9);
+     /*background: #B0DBFF;
+     opacity: 0.7;*/
+     background: rgba(167, 229, 250, 0.5);
+ }
+ img {
+   opacity: 1.0;
  }
 
  .intro-text {
@@ -108,7 +113,7 @@
  .img-border {
      float: none;
      margin: 0 auto 0;
-     border: #999999 solid 1px;
+     border: none;
  }
 
  .img-left {
@@ -149,8 +154,10 @@
          margin-right: 25px;
      }
      .img-center {
-         float: center
+         float: center;
      }
+
+
 
      .address-bar {
          display: inherit;
