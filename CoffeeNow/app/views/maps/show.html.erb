@@ -1,6 +1,12 @@
 
     <div id="map"></div>
-    <div class="brand"><h1 style="color:white;"><%= @place_name %></h1></div>
+    <div class="brand">
+      <h1 style="color:white;"><%= @place_name %>
+            <br>
+            <a href='/'><button type="button" class="btn btn-primary">Back</button></a>
+    </div></h1>
+    </div>
+
      <script>
        function initMap() {
          var directionsService = new google.maps.DirectionsService;
