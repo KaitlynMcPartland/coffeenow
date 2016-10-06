@@ -7,7 +7,7 @@
          var directionsDisplay = new google.maps.DirectionsRenderer;
          var map = new google.maps.Map(document.getElementById('map'), {
            zoom: 10,
-           center: {lat: <%= @lat %>, lng: <%= @long %>}
+           center: {lat: <%= @lat %>, lng: <%= @lng %>}
          });
          directionsDisplay.setMap(map);
           calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -15,8 +15,8 @@
 
        function calculateAndDisplayRoute(directionsService, directionsDisplay) {
          directionsService.route({
-           origin: {lat: <%= @lat %>, lng: <%= @long %>},
-           destination: {lat: <%= @place_lat %>, lng: <%= @place_long%>},
+           origin: {lat: <%= @lat %>, lng: <%= @lng %>},
+           destination: {lat: <%= @place_lat %>, lng: <%= @place_lng%>},
            travelMode: 'WALKING'
          }, function(response, status) {
            console.log(response);
