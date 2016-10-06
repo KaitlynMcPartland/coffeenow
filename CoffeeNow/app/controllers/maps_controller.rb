@@ -5,26 +5,25 @@ class MapsController < ApplicationController
   end
 
   def show
-    @lat = geolocation['location']['lat']
-    @long = geolocation['location']['lng']
-    @fearless_lat = "37.785205"
-    @fearless_long = "-122.395468"
-    @place_id = places
+    current_location = geolocation['location']
+    @lat = current_location['lat']
+    @lng = current_location['lng']
+    closest_place = places(@lat, @lng)
+    @place_name = closest_place['name']
+    @place_lat = closest_place['geometry']['location']['lat']
+    @place_lng = closest_place['geometry']['location']['lng']
   end
 
+#this is making a call to get the location of the user
   def geolocation
     response = HTTParty.post("https://www.googleapis.com/geolocation/v1/geolocate?key=#{ENV['GEO_API_KEY']}")
   end
 
-  def places
-    @lat = geolocation['location']['lat']
-    @long = geolocation['location']['lng']
-    response = HTTParty.post("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{@lat},#{@long}&radius=500&type=cafe&key=#{ENV['PLACES_API_KEY']}")
-    return response['results'][1]['id']
+# get the place object of the nearest open coffee shop to current location
+  def places(lat, lng)
+    response = HTTParty.post("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{lng}&radius=500&type=cafe&key=#{ENV['PLACES_API_KEY']}")
+    return response['results'][1]
   end
 
-  def directions
-    @place_id = places
-  end
 
 end
